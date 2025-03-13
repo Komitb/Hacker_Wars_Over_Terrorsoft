@@ -40,6 +40,11 @@ public class Player_Controller : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (collision.gameObject.CompareTag("Coins"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     // Cuando el jugador deja de estar en contacto con el suelo, se marca como no en el suelo

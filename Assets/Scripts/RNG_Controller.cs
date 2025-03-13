@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class RNG_Controller : MonoBehaviour
 {
-    public GameObject[] Players; // Array of players
+    public GameObject[] Players; // Array de jugadores instanciados
 
-    Player_Controller playerController; // Assuming you have a Player_Controller class
+    Player_Controller playerController; // Asumimos que tienes un Player_Controller para cada jugador
 
-    public CinemachineCamera cameraCine;
+    public CinemachineCamera cameraCine; // Cámara para seguir al jugador seleccionado
 
     int selectedPlayerIndex;
     int playerRotation;
@@ -22,65 +22,73 @@ public class RNG_Controller : MonoBehaviour
     void Start()
     {
         roundTime = 30;
-        // Pick a random player index from the Players array
-        selectedPlayerIndex = UnityEngine.Random.Range(0, Players.Length);
 
-        // Get the selected player GameObject
-        GameObject selectedPlayer = Players[selectedPlayerIndex];
+        // Busca todos los objetos con la etiqueta "Player" (o el tag que hayas asignado a los jugadores)
+        Players = GameObject.FindGameObjectsWithTag("Player");
 
-        // Example: Get the Player_Controller component from the selected player
-        playerController = selectedPlayer.GetComponent<Player_Controller>();
+        // Si hay jugadores, selecciona uno aleatorio
+        if (Players.Length > 0)
+        {
+            // Selecciona un jugador aleatorio
+            selectedPlayerIndex = UnityEngine.Random.Range(0, Players.Length);
 
-        // You can now do something with the selected player
-        Debug.Log("Selected Player: " + selectedPlayer.name);
+            // Obtiene el jugador seleccionado
+            GameObject selectedPlayer = Players[selectedPlayerIndex];
 
-        playerController.isActivePlayer = true;
-        playerRotation = selectedPlayerIndex;
+            // Obtiene el controlador del jugador
+            playerController = selectedPlayer.GetComponent<Player_Controller>();
 
-        cameraCine.Follow = selectedPlayer.transform;
-        cameraCine.LookAt = selectedPlayer.transform;
+            Debug.Log("Selected Player: " + selectedPlayer.name);
+
+            // Marca al jugador como activo
+            playerController.isActivePlayer = true;
+            playerRotation = selectedPlayerIndex;
+
+            // La cámara seguirá al jugador seleccionado
+            cameraCine.Follow = selectedPlayer.transform;
+            cameraCine.LookAt = selectedPlayer.transform;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         timer += Time.deltaTime;
+
         if (roundTime >= 0)
         {
-            Hourglasscontrol();
+            Hourglasscontrol(); // Controla el temporizador
         }
 
         if (Input.GetKeyDown(KeyCode.E) || roundTime <= 0)
         {
-            roundChanger();
+            roundChanger(); // Cambia de ronda cuando se presiona E o se acaba el tiempo
         }
     }
+
     void roundChanger()
     {
-         roundTime = 30;
-        // Deactivate the current active player
+        roundTime = 30;
+
+        // Desactiva al jugador actual
         playerController.isActivePlayer = false;
 
-        // Increment the player index and ensure it wraps around using modulo (%)
+        // Incrementa el índice del jugador de forma cíclica (utilizando %)
         playerRotation = (playerRotation + 1) % Players.Length;
 
-        // Get the next player
+        // Obtiene el siguiente jugador
         GameObject selectedPlayer = Players[playerRotation];
-
-        // Get the Player_Controller component from the selected player
         playerController = selectedPlayer.GetComponent<Player_Controller>();
 
-        // Log the selected player
         Debug.Log("Selected Player: " + selectedPlayer.name);
 
-        // Activate the new player
+        // Marca al nuevo jugador como activo
         playerController.isActivePlayer = true;
 
-        // Update the camera to follow and look at the new player
+        // Actualiza la cámara para que siga al nuevo jugador
         cameraCine.Follow = selectedPlayer.transform;
         cameraCine.LookAt = selectedPlayer.transform;
     }
+
     public void Hourglasscontrol()
     {
         if (timer > timerSeconds)
