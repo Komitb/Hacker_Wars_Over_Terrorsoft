@@ -8,7 +8,7 @@ public class PlayerAimAndShoot : MonoBehaviour
 
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform bulletSpawnPoint; 
+    [SerializeField] private Transform bulletSpawnPoint;
 
     private GameObject bulletInst;
 
@@ -18,7 +18,7 @@ public class PlayerAimAndShoot : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     public void HandleGunRotation()

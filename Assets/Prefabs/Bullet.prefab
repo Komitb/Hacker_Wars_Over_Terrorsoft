@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6117706329554620362}
   - component: {fileID: 8987708082824996596}
   - component: {fileID: 805126692263797581}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6948235984686652840}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -161,8 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022085053509e124387bec3cf56e7eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalBulletSpeed: 15
-  destroyTime: 3
   whatDestroysBullet:
     serializedVersion: 2
     m_Bits: 72
+  destroyTime: 3
+  normalBulletSpeed: 15
+  physicsBulletSpeed: 30
+  physicsBulletGravity: 3
+  bulletType: 0
