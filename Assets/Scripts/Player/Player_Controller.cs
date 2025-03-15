@@ -10,6 +10,7 @@ public class Player_Controller : MonoBehaviour
     private bool isGrounded = false; // Indica si el jugador está en el suelo
 
     public bool isActivePlayer;
+    public PlayerAimAndShoot playerAim;
     void Start()
     {
         // Obtiene el componente Rigidbody2D del jugador
@@ -20,6 +21,9 @@ public class Player_Controller : MonoBehaviour
     {
         if (isActivePlayer == true)
         {
+            playerAim.HandleGunRotation();
+            playerAim.HandleGunShooting();
+
             // Movimiento horizontal
             float moveInput = Input.GetAxis("Horizontal");
             rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
