@@ -13,6 +13,7 @@ public class BulletBehaviour : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(EnableCollisionDelay());
 
         SetDestroyTime();
 
@@ -48,5 +49,12 @@ public class BulletBehaviour : MonoBehaviour
     private void SetDestroyTime()
     {
         Destroy(gameObject, destroyTime);
+    }
+    private IEnumerator EnableCollisionDelay()
+    {
+        Collider2D bulletCollider = GetComponent<Collider2D>();
+        bulletCollider.enabled = false;
+        yield return new WaitForSeconds(0.07f);
+        bulletCollider.enabled = true;
     }
 }
