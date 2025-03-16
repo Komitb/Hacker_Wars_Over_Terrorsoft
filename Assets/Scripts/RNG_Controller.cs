@@ -56,7 +56,7 @@ public class RNG_Controller : MonoBehaviour
             roundChanger();
         }
     }
-    void roundChanger()
+    public void roundChanger()
     {
          roundTime = 30;
         // Deactivate the current active player

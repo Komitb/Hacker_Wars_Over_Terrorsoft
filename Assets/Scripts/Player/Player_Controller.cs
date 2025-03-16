@@ -10,7 +10,10 @@ public class Player_Controller : MonoBehaviour
     private bool isGrounded = false; // Indica si el jugador está en el suelo
 
     public bool isActivePlayer;
+
+    [Header("Scripts")]
     public PlayerAimAndShoot playerAim;
+
     void Start()
     {
         // Obtiene el componente Rigidbody2D del jugador

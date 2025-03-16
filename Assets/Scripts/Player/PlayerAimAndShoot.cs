@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerAimAndShoot : MonoBehaviour
 {
-
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -15,6 +14,10 @@ public class PlayerAimAndShoot : MonoBehaviour
     private Vector2 worldPosition;
     private Vector2 direction;
     private float angle;
+
+    [Header("Scripts")]
+    public Player_Controller player_Controller;
+    public RNG_Controller rng_Controller;
 
     private void Update()
     {
@@ -42,15 +45,23 @@ public class PlayerAimAndShoot : MonoBehaviour
         }
 
         gun.transform.localScale = localScale;
-
     }
 
     public void HandleGunShooting()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            // Spawnear bala
+            // Spawnear bala, lockear posicion del jugador y cambiar de ronda.
             bulletInst = Instantiate(bullet, bulletSpawnPoint.position, gun.transform.rotation);
+            player_Controller.speed = 0;
+            StartCoroutine(WaitAndChangeRound());
         }
+    }
+
+    private IEnumerator WaitAndChangeRound() // Nabegos no esta de acuerdo.
+    {
+        yield return new WaitForSeconds(2f); // Esperar 2 segundos, cambiar de ronda y desbloquear al jugador cuando vuelva a ser su turno.
+        rng_Controller.roundChanger();
+        player_Controller.speed = 5f;   
     }
 }

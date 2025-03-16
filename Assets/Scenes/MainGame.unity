@@ -315,6 +315,8 @@ MonoBehaviour:
   gun: {fileID: 1460649117}
   bullet: {fileID: 6948235984686652840, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
   bulletSpawnPoint: {fileID: 1933115771}
+  player_Controller: {fileID: 286893033}
+  rng_Controller: {fileID: 711674368}
 --- !u!1 &400885304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1005,8 @@ MonoBehaviour:
   gun: {fileID: 1120540331}
   bullet: {fileID: 6948235984686652840, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
   bulletSpawnPoint: {fileID: 1445268377}
+  player_Controller: {fileID: 732536979}
+  rng_Controller: {fileID: 711674368}
 --- !u!1 &798782150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,6 +1623,8 @@ MonoBehaviour:
   gun: {fileID: 837240153}
   bullet: {fileID: 6948235984686652840, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
   bulletSpawnPoint: {fileID: 244078199}
+  player_Controller: {fileID: 1887474607}
+  rng_Controller: {fileID: 711674368}
 --- !u!1 &1933115770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,6 +1915,8 @@ MonoBehaviour:
   gun: {fileID: 400885304}
   bullet: {fileID: 6948235984686652840, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
   bulletSpawnPoint: {fileID: 798782151}
+  player_Controller: {fileID: 2005422643}
+  rng_Controller: {fileID: 711674368}
 --- !u!1 &2094353777
 GameObject:
   m_ObjectHideFlags: 0
