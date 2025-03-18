@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-    //Punto de Aparición de cada equipo del juego
-    public GameObject[] playerPrefabs;
+    // Referencia al prefab de jugador único
+    public GameObject playerPrefab;
 
     // Start is called before the first frame update
-    void Start() //LLamamos al SpawnObject para generar el objeto asociado a cada equipo
+    void Start()
     {
-        for (int i = 0; i < playerPrefabs.Length; i++)
-        {
-            SpawnObject(playerPrefabs[i]); // Spawnea el jugador en el punto correspondiente
-        }
+        SpawnObject(); // Llama a la función para spawnear el jugador en el punto correspondiente
     }
 
-    Vector2 GetSpawnPoint() //Decimos el rango maximo donde se podran generar los objetos entre los ejes x, y.
+    Vector2 GetSpawnPoint() // Define el rango máximo de generación de objetos entre los ejes X e Y.
     {
         float x = Random.Range(-26f, 31f);
         float y = Random.Range(1f, 8f);
@@ -24,12 +21,12 @@ public class SpawnPoint : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    void SpawnObject(GameObject playerPrefab)
+    void SpawnObject()
     {
         // Obtén un punto de spawn aleatorio
         Vector2 spawnPos = GetSpawnPoint();
 
-        // Instancia el jugador en la posición aleatoria con rotación inicial de 0
+        // Instancia un jugador en la posición aleatoria con rotación inicial de 0
         Instantiate(playerPrefab, spawnPos, Quaternion.identity);
     }
 }
