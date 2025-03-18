@@ -15,13 +15,22 @@ public class PlayerAimAndShoot : MonoBehaviour
     private Vector2 direction;
     private float angle;
 
+    [Header("Disparos")]
+    [SerializeField] private int maxShots = 2; // Número máximo de disparos permitidos
+    private int numOfShots;
+
     [Header("Scripts")]
     public Player_Controller player_Controller;
     public RNG_Controller rng_Controller;
 
+    private void Start()
+    {
+        numOfShots = maxShots; // Inicializamos el contador de disparos
+    }
+
     private void Update()
     {
-
+        
     }
 
     public void HandleGunRotation()
@@ -49,19 +58,25 @@ public class PlayerAimAndShoot : MonoBehaviour
 
     public void HandleGunShooting()
     {
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.leftButton.wasPressedThisFrame && numOfShots > 0)
         {
-            // Spawnear bala, lockear posicion del jugador y cambiar de ronda.
+            // Disparar el arma si quedan disparos
+            numOfShots--;
             bulletInst = Instantiate(bullet, bulletSpawnPoint.position, gun.transform.rotation);
-            player_Controller.speed = 0;
-            StartCoroutine(WaitAndChangeRound());
+            if (numOfShots == 0)
+            {
+                // Si se han agotado los disparos, cambiar de turno
+                player_Controller.speed = 0; // Desactivar el movimiento del jugador al disparar
+                StartCoroutine(WaitAndChangeRound());
+            }
         }
     }
 
-    private IEnumerator WaitAndChangeRound() // Nabegos no esta de acuerdo.
+    private IEnumerator WaitAndChangeRound() // Nabegos no esta de acuerdo
     {
         yield return new WaitForSeconds(2f); // Esperar 2 segundos, cambiar de ronda y desbloquear al jugador cuando vuelva a ser su turno.
-        rng_Controller.roundChanger();
-        player_Controller.speed = 5f;   
+        rng_Controller.roundChanger();  // Cambiar el turno
+        numOfShots = maxShots; // Resetear el contador de disparos para el siguiente turno
+        player_Controller.speed = 5f; // Volver a activar el movimiento del jugador
     }
 }
