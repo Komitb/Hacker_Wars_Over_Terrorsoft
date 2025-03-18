@@ -7,14 +7,14 @@ public class BulletBehaviour : MonoBehaviour
 {
     [Header("General Bullet Stats")]
     [SerializeField] private LayerMask whatDestroysBullet;
-    [SerializeField] private float destroyTime = 3f;
+    [SerializeField] private float destroyTime;
 
     [Header("Normal Bullet Stats")]
     [SerializeField] private float normalBulletSpeed = 15f;
     [SerializeField] private float normalBulletDamage = 25f;
 
     [Header("Physics Bullet Stats")]
-    [SerializeField] private float physicsBulletSpeed = 17.5f;
+    [SerializeField] public float physicsBulletSpeed;
     [SerializeField] private float physicsBulletGravity = 3f;
     [SerializeField] private float physicsBulletDamage = 50f;
 

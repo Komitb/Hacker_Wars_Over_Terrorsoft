@@ -164,10 +164,10 @@ MonoBehaviour:
   whatDestroysBullet:
     serializedVersion: 2
     m_Bits: 72
-  destroyTime: 3
+  destroyTime: 8
   normalBulletSpeed: 15
   normalBulletDamage: 25
-  physicsBulletSpeed: 30
+  physicsBulletSpeed: 0.288317
   physicsBulletGravity: 3
   physicsBulletDamage: 50
   bulletType: 1

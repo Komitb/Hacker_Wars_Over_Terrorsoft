@@ -218,6 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eceed8c3a2a7d048ab92bf0a893c9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   speed: 5
   jumpForce: 5
   isActivePlayer: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   maxShots: 2
   player_Controller: {fileID: 286893033}
   rng_Controller: {fileID: 711674368}
+  bulletBehaviour: {fileID: 805126692263797581, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
 --- !u!1 &400885304
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,6 +911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eceed8c3a2a7d048ab92bf0a893c9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   speed: 5
   jumpForce: 5
   isActivePlayer: 0
@@ -1009,6 +1012,7 @@ MonoBehaviour:
   maxShots: 2
   player_Controller: {fileID: 732536979}
   rng_Controller: {fileID: 711674368}
+  bulletBehaviour: {fileID: 805126692263797581, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
 --- !u!1 &798782150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eceed8c3a2a7d048ab92bf0a893c9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   speed: 5
   jumpForce: 5
   isActivePlayer: 0
@@ -1628,6 +1633,7 @@ MonoBehaviour:
   maxShots: 2
   player_Controller: {fileID: 1887474607}
   rng_Controller: {fileID: 711674368}
+  bulletBehaviour: {fileID: 805126692263797581, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
 --- !u!1 &1933115770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,6 +1827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eceed8c3a2a7d048ab92bf0a893c9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   speed: 5
   jumpForce: 5
   isActivePlayer: 0
@@ -1921,6 +1928,7 @@ MonoBehaviour:
   maxShots: 2
   player_Controller: {fileID: 2005422643}
   rng_Controller: {fileID: 711674368}
+  bulletBehaviour: {fileID: 805126692263797581, guid: 0d50ebdc63081ca47ad2cdeb7947ba3c, type: 3}
 --- !u!1 &2094353777
 GameObject:
   m_ObjectHideFlags: 0
