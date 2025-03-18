@@ -1,10 +1,14 @@
 using UnityEngine;
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller : MonoBehaviour, IDamageable
 {
-    [Header("Parámetros de Movimiento")]
+    [Header("Parámetros del Jugador")]
+    [SerializeField] private float maxHealth = 100f;
+    private float currentHealth;
+   
     public float speed = 5f;       // Velocidad de movimiento horizontal
     public float jumpForce = 5f;   // Fuerza aplicada al saltar
+
 
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
@@ -18,6 +22,8 @@ public class Player_Controller : MonoBehaviour
     {
         // Obtiene el componente Rigidbody2D del jugador
         rb = GetComponent<Rigidbody2D>();
+
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -56,5 +62,16 @@ public class Player_Controller : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    public void Damage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+
+        if (currentHealth <= 0)
+        {
+            //Destroy(gameObject);
+        }
+
     }
 }

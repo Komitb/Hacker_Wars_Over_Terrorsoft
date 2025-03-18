@@ -11,12 +11,15 @@ public class BulletBehaviour : MonoBehaviour
 
     [Header("Normal Bullet Stats")]
     [SerializeField] private float normalBulletSpeed = 15f;
+    [SerializeField] private float normalBulletDamage = 25f;
 
     [Header("Physics Bullet Stats")]
     [SerializeField] private float physicsBulletSpeed = 17.5f;
     [SerializeField] private float physicsBulletGravity = 3f;
+    [SerializeField] private float physicsBulletDamage = 50f;
 
     private Rigidbody2D rb;
+    private float damage;
 
     public enum BulletType
     {
@@ -55,10 +58,12 @@ public class BulletBehaviour : MonoBehaviour
         if (bulletType == BulletType.Normal)
         {
             SetStraightVelocity();
+            damage = normalBulletDamage;
         }
         else if (bulletType == BulletType.Physics)
         {
             SetPhysicsVelocity();
+            damage = physicsBulletDamage;   
         }
     }
 
@@ -75,6 +80,11 @@ public class BulletBehaviour : MonoBehaviour
             // Temblor de la pantalla
 
             // Hacer daño
+            IDamageable iDamageable = collision.gameObject.GetComponent<IDamageable>();
+            if (iDamageable != null)
+            {
+                iDamageable.Damage(damage);
+            }
 
             // Destruir la bala
             Destroy(gameObject);

@@ -166,6 +166,8 @@ MonoBehaviour:
     m_Bits: 72
   destroyTime: 3
   normalBulletSpeed: 15
+  normalBulletDamage: 25
   physicsBulletSpeed: 30
   physicsBulletGravity: 3
+  physicsBulletDamage: 50
   bulletType: 1
