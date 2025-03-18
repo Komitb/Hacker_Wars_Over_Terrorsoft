@@ -9,7 +9,6 @@ public class Player_Controller : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
 
-    public bool isActivePlayer;
     void Start()
     {
         // Obtiene el componente Rigidbody2D del jugador
@@ -18,17 +17,14 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
-        if (isActivePlayer == true)
-        {
-            // Movimiento horizontal
-            float moveInput = Input.GetAxis("Horizontal");
-            rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        // Movimiento horizontal
+        float moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-            // Salto: se activa cuando se presiona la tecla "Salto" y el jugador está en el suelo
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
+        // Salto: se activa cuando se presiona la tecla "Salto" y el jugador está en el suelo
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
 
