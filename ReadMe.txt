@@ -9,7 +9,7 @@ IDEA: Juego tipo "Worms" (Juego de estrategia por turnos en el que tienes un num
 2. Historial de Hackeos
 Hack 1 - OverTerrorsoft 13/03/2025-20/03/2025
 
-¿Qué hemos cambiado?
+¿Qué hemos hecho?
 
 1. Hemos creado una mecánica de turnos en el que el jugador activo tiene 30s para hacer acciones, cuando pasa ese tiempo o se ejecuta una accion el turno cambia al siguiente jugador en orden. El jugador que tiene el primer turno se elige de forma aleatoria en el script de "RNG Controller", en ese script también esta el funcionamiento de los turnos (cambiar personaje activo y que la cámara siga al personaje activo). En estos juegos se suele tener un equipo entero (Ex. 4 PJ) por ahora cada equipo es de un jugador pero estaría bien si fuesen de mas de uno.
 
@@ -21,18 +21,29 @@ Hack 1 - OverTerrorsoft 13/03/2025-20/03/2025
 
 ¿Cómo lo hemos hecho?
 
- 
+Carpeta Interfaces: Hace que le puedas hacer daño al jugador
+
+Carpeta Invetory: Dentro hay 3 scripts, "Inventory" es el script base del inventario, "Item" son las propiedades de los ítems y "Slot" actualiza los slots del inventario con la imagen de los objetos recogidos.
+
+Carpeta Player: Dentro hay 2 scripts, "Player_Controller" es todo lo relacionado con el control del personaje y "PlayerAnimAndShoot" es todo lo que tiene que ver con la mecánica del disparo.
+
+Carpeta Weapons: Dentro hay 1 script, "BulletBehaviour" es el comportamiento de la bala.
+
+Carpeta Coins: Dentro hay 3 scripts, "Coin" hace que detecte la colision de la moneda, "CoinSpawn" hace que las monedas aparezcan aleatoriamente y "ScoreManager" cuenta las monedas recogidas.
+
+RNG_Controller: Es todo el funcionamiento de las rondas y la función de elegir aleatoriamente el primer jugador.
 
 
-
-¿Cómo lo hemos hecho?
-(Explicación técnica de los cambios en código: qué scripts o escenas se han modificado, qué lógica se ha añadido o cambiado, etc.)
 
 ¿Qué problemas hemos encontrado?
 (Opcional, pero útil: cualquier dificultad o bug que hayan encontrado, incluso si no lo han resuelto)
 
 Notas para el siguiente equipo:
-(Sugerencias, ideas o advertencias para el próximo equipo que reciba este proyecto)
+La idea era que tanto la temática del escenario como del resto del proyecto fuese con temática de casino, tipo maquina tragamonedas. También la idea inicial era hacerlo estilo pixel art pero como veais.
+A poder ser si os animais a hacer armas la idea era que fuesen referencias a otros juegos (Ex. Raygun de los zombies del Black Ops, Lanzaguisantes, Espada Maestra o Cuchillo del movimiento) No hay código para armas melee.
 
 3. Instrucciones de Uso
-(Opcional, pero recomendable si el proyecto ya tiene varios cambios: explicaciones sobre cómo jugar, controles, requisitos técnicos, etc.)
+
+WASD --> Movimineto 
+E --> (Test) cambiar de ronda
+I --> Inventario  
