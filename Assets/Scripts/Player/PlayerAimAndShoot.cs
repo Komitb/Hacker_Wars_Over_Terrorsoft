@@ -80,7 +80,7 @@ public class PlayerAimAndShoot : MonoBehaviour
         }
         if (charging)
         {
-           chargeSpeed = bulletBehaviour.physicsBulletSpeed += 10f * Time.deltaTime;
+            chargeSpeed = bulletBehaviour.physicsBulletSpeed += 10f * Time.deltaTime;
         }
         if (numOfShots == 0)
         {

@@ -6,23 +6,23 @@ using UnityEngine;
 
 public class RNG_Controller : MonoBehaviour
 {
-    public GameObject[] Players; // Array of players
+    public GameObject[] Players; // El array que contiene a los jugadores
 
-    Player_Controller playerController; // Assuming you have a Player_Controller class
+    Player_Controller playerController; 
 
     public CinemachineCamera cameraCine;
 
     int selectedPlayerIndex;
     int playerRotation;
 
-    float timer;
-    public int roundTime;
-    public float timerSeconds = 1;
+    float timer; // Cuenta el time delta time
+    public int roundTime; // El temporizador que cuenta el tiempo restante del jugador
+    public float timerSeconds = 1; // Cuenta los segundos de uno en uno (si cambias esto el timer baja en lo que le pongas)
 
     void Start()
     {
-        roundTime = 30;
-        // Pick a random player index from the Players array
+        roundTime = 30; // tiempo de la ronda
+        // Elige un player aleatorio entre 0 y la cantidad de players que hay en el array (ahora mismo 4)
         selectedPlayerIndex = UnityEngine.Random.Range(0, Players.Length);
 
         // Get the selected player GameObject
