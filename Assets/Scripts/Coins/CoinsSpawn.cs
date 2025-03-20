@@ -8,17 +8,17 @@ public class CoinsSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnCoins", 0f, 30f);
+        InvokeRepeating("SpawnCoins", 0f, 30f); //Aqui repetimos cada 30s el spawn de la moneda
     }
 
-    Vector2 GetSpawnPoint()
+    Vector2 GetSpawnPoint() //Nos da la posicion de spawn de la moneda
     {
-        float x = Random.Range(-26f, 31f);
+        float x = Random.Range(-20f, 20f);
         float y = Random.Range(1f, 8f);
 
         return new Vector2(x, y);
     }
-    void SpawnCoins()
+    void SpawnCoins() //Instancia la coin
     {
         Instantiate(coinsSpawn, GetSpawnPoint(), Quaternion.identity);
     }

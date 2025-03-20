@@ -8,7 +8,7 @@ public class Player_Controller : MonoBehaviour, IDamageable
    
     public float speed = 5f;       // Velocidad de movimiento horizontal
     public float jumpForce = 5f;   // Fuerza aplicada al saltar
-
+    public int coinValue; //Valor de la coin
 
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
@@ -52,6 +52,13 @@ public class Player_Controller : MonoBehaviour, IDamageable
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+        }
+
+        //Detecta si hay colision con cualquier objeto con tag Coins y si existe esa colision añade 1 punto al scoreTotal y destruye el objeto
+        if (collision.gameObject.CompareTag("Coins"))
+        {
+            ScoreManager.instance.AddScore(1);
+            Destroy(collision.gameObject);
         }
     }
 
