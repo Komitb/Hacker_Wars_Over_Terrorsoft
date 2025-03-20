@@ -71,11 +71,8 @@ public class Player_Controller : MonoBehaviour
         // Si el jugador está activo, incrementa el puntaje
         if (isActivePlayer)
         {
-            // Incrementa el puntaje
-            playerScore += 1;
-
-            // Actualiza el puntaje en la UI
-            UpdateScoreText();
+            // Incrementa el puntaje en ScoreManager
+            ScoreManager.instance.ChangeScore(1); // Aumentamos en 1 por cada moneda recogida
 
             // Destruye la moneda
             Destroy(coin);
