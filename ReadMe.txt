@@ -1,6 +1,6 @@
 README - Hack Wars
 1. Información del Proyecto
-Nombre del Proyecto: Snails
+Nombre del Proyecto: Snails (Gusano ludópata)
 Equipo Creador: Iker Rubio, Elliot Palestina, Lucas Ruiz, Daniel Fachero - OverTerrorsoft
 Fecha de Creación: 13/03/2025
 
@@ -36,7 +36,8 @@ RNG_Controller: Es todo el funcionamiento de las rondas y la función de elegir 
 
 
 ¿Qué problemas hemos encontrado?
-(Opcional, pero útil: cualquier dificultad o bug que hayan encontrado, incluso si no lo han resuelto)
+
+En el script "Slots" hay una linea comentada, esta da problema, creemos que si le pones un panel a cada slot en la escena se debería solucionar.
 
 Notas para el siguiente equipo:
 La idea era que tanto la temática del escenario como del resto del proyecto fuese con temática de casino, tipo maquina tragamonedas. También la idea inicial era hacerlo estilo pixel art pero como veais.

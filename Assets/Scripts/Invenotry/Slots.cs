@@ -16,7 +16,7 @@ public class Slots : MonoBehaviour
     public Transform slotIconGameObject;
     private void Start()
     {
-        slotIconGameObject = transform.GetChild(0);
+        //slotIconGameObject = transform.GetChild(0);
     }
     public void UpdateSlot()//cuando un objeto es recogido se pondra en el slot la imagen puesta en "icon"
     {
