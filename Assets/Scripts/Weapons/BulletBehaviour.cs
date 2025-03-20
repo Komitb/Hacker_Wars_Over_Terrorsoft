@@ -14,7 +14,7 @@ public class BulletBehaviour : MonoBehaviour
     [SerializeField] private float normalBulletDamage = 25f;
 
     [Header("Physics Bullet Stats")]
-    [SerializeField] private float physicsBulletSpeed = 17.5f;
+    [SerializeField] public float physicsBulletSpeed;
     [SerializeField] private float physicsBulletGravity = 3f;
     [SerializeField] private float physicsBulletDamage = 50f;
 
