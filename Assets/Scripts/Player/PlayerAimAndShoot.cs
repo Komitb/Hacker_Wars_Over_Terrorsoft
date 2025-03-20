@@ -91,7 +91,7 @@ public class PlayerAimAndShoot : MonoBehaviour
     }
 
 
-    private IEnumerator WaitAndChangeRound()
+    private IEnumerator WaitAndChangeRound() // Nabegos no está de acuerdo
     {
         if (isWaitingForNextRound)
             yield break;  // Si ya está en ejecución, no lo llamamos de nuevo.
