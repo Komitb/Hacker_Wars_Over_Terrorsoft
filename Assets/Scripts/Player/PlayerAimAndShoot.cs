@@ -16,6 +16,7 @@ public class PlayerAimAndShoot : MonoBehaviour
     private float angle;
     private float chargeSpeed;
     private bool charging;
+    private bool isWaitingForNextRound = false;
 
     [Header("Disparos")]
     [SerializeField] private int maxShots = 2; // Número máximo de disparos permitidos
@@ -25,6 +26,7 @@ public class PlayerAimAndShoot : MonoBehaviour
     public Player_Controller player_Controller;
     public RNG_Controller rng_Controller;
     public BulletBehaviour bulletBehaviour;
+
 
     private void Start()
     {
@@ -65,12 +67,12 @@ public class PlayerAimAndShoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && numOfShots > 0)
         {
             bulletBehaviour.physicsBulletSpeed = 0f;
-            numOfShots--;
             charging = true;
             Debug.Log("Pulado");
         }
         if (Input.GetMouseButtonUp(0))
         {
+            numOfShots--;
             bulletBehaviour.physicsBulletSpeed = chargeSpeed;
             bulletInst = Instantiate(bullet, bulletSpawnPoint.position, gun.transform.rotation);
             Debug.Log("Soltado con una fuerza de " + chargeSpeed);
@@ -88,11 +90,19 @@ public class PlayerAimAndShoot : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitAndChangeRound() // Nabegos no esta de acuerdo
+
+    private IEnumerator WaitAndChangeRound()
     {
-        yield return new WaitForSeconds(2f); // Esperar 2 segundos, cambiar de ronda y desbloquear al jugador cuando vuelva a ser su turno.
+        if (isWaitingForNextRound)
+            yield break;  // Si ya está en ejecución, no lo llamamos de nuevo.
+
+        isWaitingForNextRound = true;
+
+        yield return new WaitForSeconds(2f); // Esperar 2 segundos
         rng_Controller.roundChanger();  // Cambiar el turno
         numOfShots = maxShots; // Resetear el contador de disparos para el siguiente turno
         player_Controller.speed = 5f; // Volver a activar el movimiento del jugador
+
+        isWaitingForNextRound = false; // Termina la corrutina
     }
 }
