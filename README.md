@@ -27,11 +27,13 @@ Carpeta Interfaces: Hace que le puedas hacer daño al jugador
 
 Carpeta Invetory: Dentro hay 3 scripts, "Inventory" es el script base del inventario, "Item" son las propiedades de los ítems y "Slot" actualiza los slots del inventario con la imagen de los objetos recogidos.
 
-Carpeta Player: Dentro hay 2 scripts, "Player_Controller" es todo lo relacionado con el control del personaje y "PlayerAnimAndShoot" es todo lo que tiene que ver con la mecánica del disparo.
+Carpeta Player: Dentro hay 2 scripts, "Player_Controller" es todo lo relacionado con el control del personaje además de detectar el colider de la coin y "PlayerAnimAndShoot" es todo lo que tiene que ver con la mecánica del disparo.
 
 Carpeta Weapons: Dentro hay 1 script, "BulletBehaviour" es el comportamiento de la bala.
 
-Carpeta Coins: Dentro hay 3 scripts, "Coin" hace que detecte la colision de la moneda, "CoinSpawn" hace que las monedas aparezcan aleatoriamente y "ScoreManager" cuenta las monedas recogidas.
+Carpeta Coins: Dentro hay 2 scripts, "CoinSpawn" hace que las monedas aparezcan aleatoriamente y "ScoreManager" cuenta las monedas recogidas.
+
+Carpeta SpawnPoint: Dentro hay 1 script, "SpawnPont" spawnea a los jugadores a los ejes ya colocados en el inspector.
 
 RNG_Controller: Es todo el funcionamiento de las rondas y la función de elegir aleatoriamente el primer jugador.
 
