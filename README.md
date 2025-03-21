@@ -43,6 +43,8 @@ RNG_Controller: Es todo el funcionamiento de las rondas y la función de elegir 
 
 En el script "Slots" hay una linea comentada, esta da problema, creemos que si le pones un panel a cada slot en la escena se debería solucionar.
 
+La hitbox del personaje esta rara y habría que ajustarla
+
 Notas para el siguiente equipo:
 La idea era que tanto la temática del escenario como del resto del proyecto fuese con temática de casino, tipo maquina tragamonedas. También la idea inicial era hacerlo estilo pixel art pero como veais.
 A poder ser si os animais a hacer armas la idea era que fuesen referencias a otros juegos (Ex. Raygun de los zombies del Black Ops, Lanzaguisantes, Espada Maestra o Cuchillo del movimiento) No hay código para armas melee.
