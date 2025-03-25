@@ -67,6 +67,7 @@ public class Player_Controler : MonoBehaviour
             isMousePressed = false;
             opacidad = 1f;
         }
+        
         if (Input.GetKeyDown(KeyCode.Return))//cunado le des al enter se activara la ventana
         {
             ventana();
