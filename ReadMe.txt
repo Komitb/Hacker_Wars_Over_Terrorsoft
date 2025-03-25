@@ -1,5 +1,5 @@
 # Hacker_Wars_Over_Terrorsoft
-Gusano ludopata
+Gusano ludópata 🤑
 README - Hack Wars
 1. Información del Proyecto
 Nombre del Proyecto: Snails (Gusano ludópata)
@@ -47,7 +47,7 @@ La hitbox del personaje esta rara y habría que ajustarla
 
 Notas para el siguiente equipo:
 La idea era que tanto la temática del escenario como del resto del proyecto fuese con temática de casino, tipo maquina tragamonedas. También la idea inicial era hacerlo estilo pixel art pero como veais.
-A poder ser si os animais a hacer armas la idea era que fuesen referencias a otros juegos (Ex. Raygun de los zombies del Black Ops, Lanzaguisantes, Espada Maestra o Cuchillo del movimiento) No hay código para armas melee.
+A poder ser si os animais a hacer armas la idea era que fuesen referencias a otros juegos (Ex. Raygun de los zombies del Black Ops, Lanzaguisantes, Espada Maestra o Cuchillo del movimiento) No hay código para armas melee. 
 
 3. Instrucciones de Uso
 
