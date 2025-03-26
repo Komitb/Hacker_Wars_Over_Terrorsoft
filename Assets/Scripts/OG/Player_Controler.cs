@@ -25,30 +25,9 @@ public class Player_Controler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Obtener los inputs de las teclas (WASD o las teclas de flechas)
-        float horizontal = 0; //Movimiento Izquierda/Derecha
-        float vertical = 0; //Movimiento Arriba/Abajo
-        if(horizontal == 0)
-        {
-            vertical = Input.GetAxis("Vertical");
-        }
-        //if (vertical == 0)
-        //{
-        //    horizontal = Input.GetAxis("Horizontal");
-        //}
-        Vector3 movimiento = new Vector3(horizontal, vertical, 0f) * velocidad * Time.deltaTime;  //Vector de movimiento 
-        transform.Translate(movimiento, Space.World); //Movimiento del Personaje
-        // Mantener presionado el botón izquierdo del ratón
-        if (Input.GetMouseButton(0)) // 0 es el botón izquierdo del ratón
-        {
-            isMousePressed = true;
-            if (lastMousePos != Input.mousePosition)
-            {
-                Debug.Log("El ratón está presionado y se está moviendo. Posición:" + lastMousePos);
-                lastMousePos = Input.mousePosition;
-            }
-        }
-        // Arrastrar y disminuir la opacidad de dirtyOver
+        Movimineto();
+        Arrastrar();
+        
         if (isMousePressed && dirtyOver != null && opacidad >= 0.2f)
         {
             // Obtener el ImageUI de dirtyOver
@@ -62,15 +41,23 @@ public class Player_Controler : MonoBehaviour
                 dirtyOver.SetActive(false);
             }
         }
-        else
+       
+    }
+    void Movimineto()
+    {
+        // Obtener los inputs de las teclas (WASD o las teclas de flechas)
+        float horizontal = 0; //Movimiento Izquierda/Derecha
+        float vertical = 0; //Movimiento Arriba/Abajo
+        if (horizontal == 0)
         {
-            isMousePressed = false;
-            opacidad = 1f;
+            vertical = Input.GetAxis("Vertical");
         }
-        if (Input.GetKeyDown(KeyCode.Return))//cunado le des al enter se activara la ventana
+        if (vertical == 0)
         {
-            ventana();
+            horizontal = Input.GetAxis("Horizontal");
         }
+        Vector3 movimiento = new Vector3(horizontal, vertical, 0f) * velocidad * Time.deltaTime;  //Vector de movimiento 
+        transform.Translate(movimiento, Space.World); //Movimiento del Personaje
     }
     public void Arrastrar() //Hace la funcion de arrastar el raton cuando tienes presionado el boton click izquierdo
     {
@@ -87,8 +74,12 @@ public class Player_Controler : MonoBehaviour
         else
         {
             isMousePressed = false;
+            opacidad = 1f;
         }
-
+        if (Input.GetKeyDown(KeyCode.Return)) //cunado le des al enter se activara la ventana
+        {
+            ventana();
+        }
     }
     public void Limpiar() // Activa el Arrastrar
     {
