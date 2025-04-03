@@ -47,6 +47,10 @@ public class Player_Controller : MonoBehaviour
         {
             isGrounded = true;
         }
+        if (collision.gameObject.CompareTag("Void"))
+        {
+            transform.position = new Vector3(0, 0, 0); 
+        }
     }
 
     // Cuando el jugador deja de estar en contacto con el suelo, se marca como no en el suelo
