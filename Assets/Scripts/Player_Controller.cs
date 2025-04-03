@@ -5,6 +5,7 @@ public class Player_Controller : MonoBehaviour
     [Header("Parámetros de Movimiento")]
     public float speed = 5f;       // Velocidad de movimiento horizontal
     public float jumpForce = 5f;   // Fuerza aplicada al saltar
+    public bool useTransformMovement;
 
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
@@ -18,13 +19,23 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         // Movimiento horizontal
-        float moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        float x = Input.GetAxis("Horizontal");
 
         // Salto: se activa cuando se presiona la tecla "Salto" y el jugador está en el suelo
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+
+        if (useTransformMovement == false)
+        {
+
+            rb.velocity = new Vector3(x, rb.velocity.y, 0);
+
+        }
+        else
+        {
+            transform.position = new Vector3 (transform.position.x + x * Time.deltaTime * speed, transform.position.y, transform.position.z);
         }
     }
 
