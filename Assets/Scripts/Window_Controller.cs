@@ -1,6 +1,9 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Window_Controller : MonoBehaviour
@@ -39,7 +42,6 @@ public class Window_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Return)) // Cuando le das al enter se activará la ventana
         {
             ventana();
@@ -53,6 +55,7 @@ public class Window_Controller : MonoBehaviour
             StartCoroutine(QuitVentana());
         }
     }
+
     public void Arrastrar() // Hace la función de arrastrar el ratón cuando tienes presionado el botón izquierdo
     {
         // Mantener presionado el botón izquierdo del ratón
@@ -125,4 +128,5 @@ public class Window_Controller : MonoBehaviour
         childLeft = 0;
         ventanaon = false;
     }
+
 }
