@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,18 +17,25 @@ public class Window_Controller : MonoBehaviour
     public GameObject Ventana;
     public GameObject dirtyOver;
     public GameObject ChildDirt;
+    public GameObject[] civiles;
+    public int civilescount;
+
+    public bool ventanaon=false;
     Vector3 lastMousePos;
 
     // Start is called before the first frame update
     void Start()
     {
+        civilescount = UnityEngine.Random.Range(0, civiles.Length);
+        GameObject civilescounter = civiles [civilescount];
+        civilescounter.SetActive(true);
         Image ImageUI = GetComponent<Image>();
         Image suciedad = GetComponent<Image>();
         foreach (Transform child in VentanaExpandida.GetComponentsInChildren<Transform>())
         {
             childLeft++;
         }
-        childLeft--; //referencia
+        childLeft-=3; //referencia
     }
 
     // Update is called once per frame
@@ -36,6 +45,7 @@ public class Window_Controller : MonoBehaviour
         if(childLeft == 0)
         {
             StartCoroutine(QuitVentana());
+            
         }
     }
     public void Arrastrar() // Hace la función de arrastrar el ratón cuando tienes presionado el botón izquierdo
@@ -84,10 +94,6 @@ public class Window_Controller : MonoBehaviour
             ventana();
         }
     }
-    public void Limpiar() // Activa el Arrastrar
-    {
-        Arrastrar();
-    }
     public void GetDirty(GameObject dirty) //Activa la suciedad elegida 
     {
         dirtyOver = dirty;
@@ -100,6 +106,7 @@ public class Window_Controller : MonoBehaviour
     {
         Ventana.SetActive(false);
         VentanaExpandida.SetActive(true);
+        ventanaon = true;
     }
     public IEnumerator QuitVentana()
     {
@@ -107,5 +114,6 @@ public class Window_Controller : MonoBehaviour
         VentanaExpandida.SetActive(false);
         Ventana.SetActive(true);
         childLeft = 0;
+        ventanaon = false;
     }
 }
