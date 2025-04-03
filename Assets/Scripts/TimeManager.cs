@@ -15,6 +15,7 @@ public class TimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         losePanel.SetActive(false);
     }
 
@@ -29,6 +30,7 @@ public class TimeManager : MonoBehaviour
                 time = 0;
                 isGameOver = true;
                 LoserPanel();
+                Time.timeScale = 0; 
             }
             TimerDisplay();
         }
