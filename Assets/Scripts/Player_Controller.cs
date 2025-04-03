@@ -24,7 +24,7 @@ public class Player_Controller : MonoBehaviour
         // Salto: se activa cuando se presiona la tecla "Salto" y el jugador está en el suelo
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpForce;    
         }
 
         if (useTransformMovement == false)
