@@ -15,6 +15,7 @@ public class Window_Controller : MonoBehaviour
     public GameObject Ventana;
     public GameObject dirtyOver;
     public GameObject ChildDirt;
+    public int stamina = 10000;
     Vector3 lastMousePos;
 
     // Start is called before the first frame update
@@ -32,7 +33,15 @@ public class Window_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Arrastrar();    
+
+        if (Input.GetKeyDown(KeyCode.Return)) // Cuando le das al enter se activará la ventana
+        {
+            ventana();
+        }
+        if (stamina >= 1)
+        {
+            Arrastrar();    
+        }
         if(childLeft == 0)
         {
             StartCoroutine(QuitVentana());
@@ -63,7 +72,7 @@ public class Window_Controller : MonoBehaviour
 
             opacidad = dirtyOverImage.color.a;
             opacidad -= opacidad * Time.deltaTime;
-
+            stamina--;
             // Disminuir la opacidad
             dirtyOverImage.color = new Color(dirtyOverImage.color.r, dirtyOverImage.color.g, dirtyOverImage.color.b, opacidad);
 
@@ -79,10 +88,10 @@ public class Window_Controller : MonoBehaviour
             opacidad = 1f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return)) // Cuando le das al enter se activará la ventana
+       /* if (Input.GetKeyDown(KeyCode.Return)) // Cuando le das al enter se activará la ventana
         {
             ventana();
-        }
+        }*/
     }
     public void Limpiar() // Activa el Arrastrar
     {
