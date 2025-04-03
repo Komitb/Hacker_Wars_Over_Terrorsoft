@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = true;
+        }
+        if (collision.gameObject.CompareTag("Void"))
+        {
+            Debug.Log("Hola");
+            transform.position = new Vector3(0, 0, 0);
         }
     }
 
