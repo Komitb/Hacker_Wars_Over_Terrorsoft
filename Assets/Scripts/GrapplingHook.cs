@@ -14,9 +14,10 @@ public class GrapplingHook : MonoBehaviour
     private DistanceJoint2D joint;
     private bool isGrappling = false; // Is the joint active/hooked?
     private Coroutine hideCoroutine = null; // Reference to the coroutine that hides the rope
-
+    Window_Controller windowc;
     void Start()
     {
+        windowc = FindAnyObjectByType<Window_Controller>();
         joint = gameObject.GetComponent<DistanceJoint2D>();
         if (joint == null)
         {
@@ -33,7 +34,7 @@ public class GrapplingHook : MonoBehaviour
     void Update()
     {
         // --- Start Firing / Attempt Grapple ---
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && windowc.ventanaon==false)
         {
             // If there's a coroutine to hide the previous rope, stop it
             if (hideCoroutine != null)

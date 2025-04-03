@@ -17,17 +17,23 @@ public class Window_Controller : MonoBehaviour
     public GameObject ChildDirt;
     public int stamina = 10000;
     Vector3 lastMousePos;
+    public bool ventanaon;
+    public GameObject[] civiles;
+    public int civilescount;
 
     // Start is called before the first frame update
     void Start()
     {
+        civilescount = UnityEngine.Random.Range(0, civiles.Length);
+        GameObject civil = civiles[civilescount];
+        civil.SetActive(true);
         Image ImageUI = GetComponent<Image>();
         Image suciedad = GetComponent<Image>();
         foreach (Transform child in VentanaExpandida.GetComponentsInChildren<Transform>())
         {
             childLeft++;
         }
-        childLeft--; //referencia
+        childLeft-=3; //referencia
     }
 
     // Update is called once per frame
@@ -109,6 +115,7 @@ public class Window_Controller : MonoBehaviour
     {
         Ventana.SetActive(false);
         VentanaExpandida.SetActive(true);
+        ventanaon = true;
     }
     public IEnumerator QuitVentana()
     {
@@ -116,5 +123,6 @@ public class Window_Controller : MonoBehaviour
         VentanaExpandida.SetActive(false);
         Ventana.SetActive(true);
         childLeft = 0;
+        ventanaon = false;
     }
 }
