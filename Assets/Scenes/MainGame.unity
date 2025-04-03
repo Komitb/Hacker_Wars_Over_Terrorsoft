@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 280129c0f9e13e143821a32d70323b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grappleLength: 100
+  grappleLength: 40
   stretchTo: 5
   grappleLayer:
     serializedVersion: 2
