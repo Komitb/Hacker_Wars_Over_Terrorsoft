@@ -67,9 +67,12 @@ TagManager:
   - name: 2
     uniqueID: 1170714327
     locked: 0
-  - name: 1
-    uniqueID: 4089986797
+  - name: Edificios Jugables
+    uniqueID: 2261098347
     locked: 0
   - name: Player
     uniqueID: 4039221161
+    locked: 0
+  - name: 1
+    uniqueID: 4089986797
     locked: 0
