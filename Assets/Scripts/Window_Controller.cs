@@ -24,10 +24,12 @@ public class Window_Controller : MonoBehaviour
     public bool ventanaon;
     public GameObject[] civiles;
     public int civilescount;
+    Player_Controller player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindAnyObjectByType<Player_Controller>();
         civilescount = UnityEngine.Random.Range(0, civiles.Length);
         GameObject civil = civiles[civilescount];
         civil.SetActive(true);
@@ -128,7 +130,10 @@ public class Window_Controller : MonoBehaviour
         Ventana.SetActive(true);
         childLeft = 0;
         ventanaon = false;
-        velocidad = 5f;
+        player.speed = 10f;
+        player.jumpForce = 5f;
+        player.civil.gameObject.SetActive(true);
+        player.civilOn=true;
     }
     public void QuitarVentanXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXa()
     {

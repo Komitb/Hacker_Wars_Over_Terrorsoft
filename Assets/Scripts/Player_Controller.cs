@@ -12,10 +12,15 @@ public class Player_Controller : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
+    public GameObject civil;
+    public bool civilOn = false;
+    TimeManager timeManager;
 
     Window_Controller window;
     void Start()
     {
+        timeManager = FindAnyObjectByType<TimeManager>();
+        civil.gameObject.SetActive(false);
         window = FindObjectOfType<Window_Controller>();
         // Obtiene el componente Rigidbody2D del jugador
         rb = GetComponent<Rigidbody2D>();
@@ -60,7 +65,10 @@ public class Player_Controller : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Void"))
         {
-            transform.position = new Vector3(0, 0, 0); 
+            civilOn=false;
+            civil.SetActive(false);
+            transform.position = new Vector3(0, 5, 0); 
+            
         }
     }
 
@@ -77,7 +85,7 @@ public class Player_Controller : MonoBehaviour
         
         if (banderon.gameObject.CompareTag("Bandera"))
         {
-            Debug.Log("nsafnaf");
+            banderon.gameObject.SetActive(false);
             window.ventana();
             speed = 0;
         }

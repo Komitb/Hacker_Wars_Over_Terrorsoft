@@ -44,7 +44,7 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    void LoserPanel()
+    public void LoserPanel()
     {
         losePanel.SetActive(true);
 
