@@ -5792,6 +5792,7 @@ MonoBehaviour:
   - {fileID: 1812500995}
   - {fileID: 555652737}
   civilescount: 0
+  civilRescatado: 0
 --- !u!114 &286893038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5858,7 +5859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f83ed8f89b8f41bbbc3c3cf61ad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 45
+  time: 20
   timeText: {fileID: 1017144604}
   losePanel: {fileID: 1602142738}
 --- !u!1 &326706402

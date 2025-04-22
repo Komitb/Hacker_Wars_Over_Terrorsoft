@@ -6,7 +6,7 @@
 
         private void OnMouseDown()
         {
-            if (controller != null && controller.ventanaon)
+            if (controller != null && controller.ventanaon && !controller.civilRescatado)
             {
                 controller.StartCoroutine(controller.QuitVentana());
             }

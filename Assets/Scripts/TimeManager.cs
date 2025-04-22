@@ -54,4 +54,12 @@ public class TimeManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainGame");
     }
+
+    public void AddTime(float seconds)
+    {
+        time += seconds;
+        TimerDisplay();
+    }
 }
+
+

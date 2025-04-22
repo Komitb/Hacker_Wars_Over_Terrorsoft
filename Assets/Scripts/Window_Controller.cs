@@ -25,6 +25,8 @@ public class Window_Controller : MonoBehaviour
     public GameObject[] civiles;
     public int civilescount;
     Player_Controller player;
+    private bool ventanaTerminada = false;
+    public bool civilRescatado = false;
 
     // Start is called before the first frame update
     void Start()
@@ -53,8 +55,9 @@ public class Window_Controller : MonoBehaviour
         {
             Arrastrar();
         }
-        if (childLeft == 0)
+        if (childLeft == 0 && !ventanaTerminada)
         {
+            ventanaTerminada |= true;
             StartCoroutine(QuitVentana());
         }
     }
@@ -126,14 +129,22 @@ public class Window_Controller : MonoBehaviour
     public IEnumerator QuitVentana()
     {
         yield return new WaitForSeconds(1);
+        if (civilRescatado) yield break;
+        civilRescatado = true;
         VentanaExpandida.SetActive(false);
         Ventana.SetActive(true);
         childLeft = 0;
         ventanaon = false;
+        ventanaTerminada = false;
         player.speed = 10f;
-        player.jumpForce = 5f;
         player.civil.gameObject.SetActive(true);
         player.civilOn=true;
+
+        TimeManager timeManager = FindAnyObjectByType<TimeManager>();
+        if (timeManager != null)
+        {
+            timeManager.AddTime(10f);
+        }
     }
     public void QuitarVentanXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXa()
     {
