@@ -128,6 +128,7 @@ public class Window_Controller : MonoBehaviour
         Ventana.SetActive(true);
         childLeft = 0;
         ventanaon = false;
+        velocidad = 5f;
     }
     public void QuitarVentanXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXa()
     {

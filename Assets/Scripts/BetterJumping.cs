@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BetterJumping : MonoBehaviour
 {
+    public Player_Controller controller;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
@@ -21,10 +22,12 @@ public class BetterJumping : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
+            controller.CreateDust();
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0 && !Input.GetButton ("Jump"))
         {
+            controller.CreateDust();
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }

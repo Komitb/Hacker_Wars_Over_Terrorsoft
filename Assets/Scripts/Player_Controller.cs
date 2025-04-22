@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    public ParticleSystem dust;
+
     [Header("Parámetros de Movimiento")]
     public float speed = 5f;       // Velocidad de movimiento horizontal
     public float jumpForce = 5f;   // Fuerza aplicada al saltar
@@ -24,21 +26,27 @@ public class Player_Controller : MonoBehaviour
         // Movimiento horizontal
         float x = Input.GetAxis("Horizontal");
 
-        // Salto: se activa cuando se presiona la tecla "Salto" y el jugador está en el suelo
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpForce;    
-        }
+        Jump();
 
         if (useTransformMovement == false)
         {
-
             rb.velocity = new Vector3(x, rb.velocity.y, 0);
 
         }
         else
         {
-            transform.position = new Vector3 (transform.position.x + x * Time.deltaTime * speed, transform.position.y, transform.position.z);
+            transform.position = new Vector3 (transform.position.x + x * Time.deltaTime * speed, transform.position.y, transform.position.z);          
+        }
+    }
+
+
+    void Jump()
+    {
+        // Salto: se activa cuando se presiona la tecla "Salto" y el jugador está en el suelo
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            CreateDust();
+            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpForce;
         }
     }
 
@@ -73,5 +81,10 @@ public class Player_Controller : MonoBehaviour
             window.ventana();
             speed = 0;
         }
+    }
+
+   public void CreateDust()
+    {
+        dust.Play();
     }
 }
