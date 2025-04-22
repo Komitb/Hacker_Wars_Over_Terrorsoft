@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour
 {
-    public float time = 45;
-    public TextMeshProUGUI timeText;
-    private bool isGameOver = false;
-    public GameObject losePanel;
+    public float time = 45; //Tiempo con el que se inicia
+    public TextMeshProUGUI timeText; //Texto para mostrar el tiempo
+    private bool isGameOver = false; //Marca si ha terminado el juego
+    public GameObject losePanel; //Panel que muestra el panel de derrota
 
     // Start is called before the first frame update
     void Start()
@@ -22,21 +22,21 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isGameOver)
+        if (!isGameOver) //Si el juego no ha terminado
         {
-            time -= Time.deltaTime;
-            if (time <= 0)
+            time -= Time.deltaTime; //Resta tiempo en cada segundo real que pasa
+            if (time <= 0) //Si llega a 0, se termina el juego y nos saca el panel de derrota
             {
                 time = 0;
                 isGameOver = true;
                 LoserPanel();
                 Time.timeScale = 0; 
             }
-            TimerDisplay();
+            TimerDisplay(); //Actualiza el texto con el tiempo actual del jhuego
         }
     }
 
-    void TimerDisplay()
+    void TimerDisplay() //Muestra el tiempo actualizado en pantalla
     {
         if (timeText != null)
         {
@@ -44,18 +44,18 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    public void LoserPanel()
+    public void LoserPanel() //Activa el panel de derrota
     {
         losePanel.SetActive(true);
 
     }
 
-    public void RestartButton()
+    public void RestartButton() //Reinicia la escena actual
     {
         SceneManager.LoadScene("MainGame");
     }
 
-    public void AddTime(float seconds)
+    public void AddTime(float seconds) //Añade segundos al timepo
     {
         time += seconds;
         TimerDisplay();

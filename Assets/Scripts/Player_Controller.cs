@@ -13,14 +13,14 @@ public class Player_Controller : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
     public GameObject civil;
-    public bool civilOn = false;
+    public bool civilOn = false; //Indica si el civil esta activo o no
     TimeManager timeManager;
 
     Window_Controller window;
     void Start()
     {
-        timeManager = FindAnyObjectByType<TimeManager>();
-        civil.gameObject.SetActive(false);
+        timeManager = FindAnyObjectByType<TimeManager>(); //
+        civil.gameObject.SetActive(false); //Desactiva al civil que acompaña al player
         window = FindObjectOfType<Window_Controller>();
         // Obtiene el componente Rigidbody2D del jugador
         rb = GetComponent<Rigidbody2D>();
@@ -63,7 +63,7 @@ public class Player_Controller : MonoBehaviour
         {
             isGrounded = true;
         }
-        if (collision.gameObject.CompareTag("Void"))
+        if (collision.gameObject.CompareTag("Void")) //Se vuelve a comenzar en el punto de spawn pero con los segundos restantes que te quedaban
         {
             civilOn=false;
             civil.SetActive(false);
@@ -80,7 +80,9 @@ public class Player_Controller : MonoBehaviour
             isGrounded = false;
         }
     }
-    void OnTriggerEnter2D(Collider2D banderon)
+
+    //Si el player entra en la bandera se activa la ventana y se destruye el objeto
+    void OnTriggerEnter2D(Collider2D banderon) 
     {
         
         if (banderon.gameObject.CompareTag("Bandera"))
