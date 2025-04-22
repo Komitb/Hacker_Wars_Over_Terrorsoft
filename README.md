@@ -25,9 +25,24 @@ En cada piso se desarrolla una historia corta que luego podrías vender la infor
 Falta que detecte cuando la ventana está limpia y que salga para seleccionar otro nivel.
 
 
-Hack #2 - Equipo  - 19/03/2024
+Hack #2 - Equipo "OverTerrorSoft"  - 19/03/2024
+
 ¿Qué hemos cambiado?
+
+Hemos cambiado la idea original del juego de limpiar cristales reutilizando el codigo original con la mecánica de limpiar para hacer un juego de Spider-Man al que de manera ingeniosa hemos llamado Snail-Man, en el que te balanceas por una ciudad rescatando civiles que estan atrapados en sus apartamentos incendiados, reusando la mecanica de limpiar para apartar escombros y rescatar a la gente que está atrapada. Es un juego arcade, es decir cuando te quedes sin tiempo pierdes y tienes que rescatar a los máximos civiles posibles en ese periodo de tiempo. 
+
+Con el click izquierdo disparas el gancho y te puedes agarrar a todas las superficies de color blanco.
+
+Con A y D te mueves de izquierda a derecha.
+
+Con Espacio saltas, a cuanto mas mantengas el Espacio saltara mas y si lo pulsas durante un momento saltara poco. 
 
 ¿Cómo lo hemos hecho?
 
+El proyecto original no tenia la camara ni el movimineto proporcionado asi que primero tuvimos que hacer un "remake" del proyecto de limpiacristales e integrarlo en el proyecto base.
+
+Elliot: para hacer el movimineto de gancho 
+
 ¿Qué problemas hemos encontrado?
+
+Elliot: al c
