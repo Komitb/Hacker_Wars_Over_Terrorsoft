@@ -33,7 +33,7 @@ Con A y D te mueves de izquierda a derecha.
 
 Con Espacio saltas, a cuanto mas mantengas el Espacio saltara mas y si lo pulsas durante un momento saltara poco. 
 
-Elliot:
+Elliot: hice la primera version del gancho que funcionaba pulsando justo encima de las superficies, añadi el parallax, añadi la camara para que sea igual a la del proyecto base, hice una "ciudad", añadi particulas al player y modifique el movimiento para que se balanceara como es debido.
 
 Lucas: Establecí la generación de los civiles detrás de las manchas de la ventana. Aparece uno al azar entre 4 posiciones posibles y tienes que quitar la mancha entera para poder rescatar al civil. Ayudé a buscar una solución para los problemas que generaba el gancho al principio.
 
@@ -43,7 +43,7 @@ Iker: Corregi la ventana (ahora escombros) para que no fuese un “Soft-Lock”,
 
 ¿Qué problemas hemos encontrado?
 
-Elliot: para hacer el movimineto de gancho 
+Elliot: para hacer el movimineto de gancho el jugador no se balanceaba bien, la solucion era simple, cambiar el movimineto del jugador para que use el transform del inspector.
 
 Lucas: Establecer puntos de aparición fijos para los civiles. dentro del minijuego de la ventana.
 
@@ -51,8 +51,10 @@ Dani: No he encontrado ningún problema en lo que he trabajado, soy un fiera
 
 Iker: Tuve problemas a la hora de hacer que el gancho no fuese solo a las plataformas “suelo” 
 
-
-
 ¿Cómo lo hemos hecho?
 
 El proyecto original no tenía la cámara ni el movimineto proporcionado así que primero tuvimos que hacer un "remake" del proyecto de limpiacristales e integrarlo en el proyecto base.
+
+NOTAS
+
+Faltan sprites, falta hacer que los civiles spawneen por los edificios.
