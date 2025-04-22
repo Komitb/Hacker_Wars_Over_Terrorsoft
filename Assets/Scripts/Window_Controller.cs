@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class Window_Controller : MonoBehaviour
     public float velocidad = 5f; //Velocidad de Movimiento
     public float opacidad = 1f;
     public int childLeft;
-    public  Image ImageUI;
+    public Image ImageUI;
     public Image Suciedad;
     private bool isMousePressed = false; //Para mantener la condición de si el ratón está presionado
     public GameObject VentanaExpandida;
@@ -36,7 +37,7 @@ public class Window_Controller : MonoBehaviour
         {
             childLeft++;
         }
-        childLeft-=3; //referencia
+        childLeft -= 3; //referencia
     }
 
     // Update is called once per frame
@@ -48,9 +49,9 @@ public class Window_Controller : MonoBehaviour
         }
         if (stamina >= 1)
         {
-            Arrastrar();    
+            Arrastrar();
         }
-        if(childLeft == 0)
+        if (childLeft == 0)
         {
             StartCoroutine(QuitVentana());
         }
@@ -97,10 +98,10 @@ public class Window_Controller : MonoBehaviour
             opacidad = 1f;
         }
 
-       /* if (Input.GetKeyDown(KeyCode.Return)) // Cuando le das al enter se activará la ventana
-        {
-            ventana();
-        }*/
+        /* if (Input.GetKeyDown(KeyCode.Return)) // Cuando le das al enter se activará la ventana
+         {
+             ventana();
+         }*/
     }
     public void Limpiar() // Activa el Arrastrar
     {
@@ -128,5 +129,8 @@ public class Window_Controller : MonoBehaviour
         childLeft = 0;
         ventanaon = false;
     }
-
+    public void QuitarVentanXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXa()
+    {
+        StartCoroutine(QuitVentana());
+    }
 }

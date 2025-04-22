@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
@@ -10,8 +11,10 @@ public class Player_Controller : MonoBehaviour
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
 
+    Window_Controller window;
     void Start()
     {
+        window = FindObjectOfType<Window_Controller>();
         // Obtiene el componente Rigidbody2D del jugador
         rb = GetComponent<Rigidbody2D>();
     }
@@ -59,6 +62,16 @@ public class Player_Controller : MonoBehaviour
         if (collision.gameObject.CompareTag("Floor"))
         {
             isGrounded = false;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D banderon)
+    {
+        
+        if (banderon.gameObject.CompareTag("Bandera"))
+        {
+            Debug.Log("nsafnaf");
+            window.ventana();
+            speed = 0;
         }
     }
 }
