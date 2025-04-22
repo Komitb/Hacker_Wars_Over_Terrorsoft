@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GrapplingHook : MonoBehaviour
 {
-    [SerializeField] private float grappleLength; // Maximum reach of the hook shot
-    [SerializeField] private float stretchTo; // The desired fixed length of the joint once connected
-    [SerializeField] private LayerMask grappleLayer;
-    [SerializeField] private LineRenderer rope;
-    [SerializeField] private float ropeMissVisibleDuration = 0.3f; // Time (seconds) the rope is visible if it misses
+    [SerializeField] private float grappleLength; // Distancia a la que llega el gancho
+    [SerializeField] private float stretchTo; // La distancia a la que el gancho se queda de la pared al empujarte a ella
+    [SerializeField] private LayerMask grappleLayer; //Capa para el gancho
+    [SerializeField] private LineRenderer rope; // El objeto que renderiza la "Cuerda" en tiempo real
+    [SerializeField] private float ropeMissVisibleDuration = 0.3f; // Tiempo en segundos en el que la cuerda se ve cuando fallas a una pared/suelo
 
     private Vector3 grapplePoint;
     private DistanceJoint2D joint;
-    private bool isGrappling = false; // Is the joint active/hooked?
-    private Coroutine hideCoroutine = null; // Reference to the coroutine that hides the rope
+    private bool isGrappling = false; // Este booleano se activa cuando estas enganchado a algo
+    private Coroutine hideCoroutine = null; 
     Window_Controller windowc;
     void Start()
     {
@@ -21,28 +21,25 @@ public class GrapplingHook : MonoBehaviour
         joint = gameObject.GetComponent<DistanceJoint2D>();
         if (joint == null)
         {
-            Debug.LogError("DistanceJoint2D component not found on this GameObject!", this);
-            // Optionally add the component if it's missing
+            Debug.LogError("No hay gancho", this);
             // joint = gameObject.AddComponent<DistanceJoint2D>();
         }
         joint.enabled = false;
         rope.enabled = false;
-        // Ensure the joint doesn't auto-configure distance, we will set it manually
         joint.autoConfigureDistance = false;
     }
 
     void Update()
     {
-        // --- Start Firing / Attempt Grapple ---
+        // Lanzamiento del gancho
         if (Input.GetMouseButtonDown(0) && windowc.ventanaon==false)
         {
-            // If there's a coroutine to hide the previous rope, stop it
+            // Para cuaquier corrutina antes de lanzar el gancho
             if (hideCoroutine != null)
             {
                 StopCoroutine(hideCoroutine);
                 hideCoroutine = null;
             }
-            // Reset state if firing again quickly (even if already grappling, rare but possible)
             if (isGrappling)
             {
                 joint.enabled = false;
@@ -50,13 +47,13 @@ public class GrapplingHook : MonoBehaviour
             }
 
 
-            // Calculate direction and origin
+            // Calcula donde tiene que lanzarse el gancho
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorldPos.z = 0;
             Vector3 currentPosition = transform.position; // Save position at the moment of firing
             Vector2 direction = (mouseWorldPos - currentPosition).normalized;
 
-            // Cast Raycast
+            // Genera el "RayCast"
             RaycastHit2D hit = Physics2D.Raycast(
                 origin: currentPosition,
                 direction: direction,
@@ -64,73 +61,56 @@ public class GrapplingHook : MonoBehaviour
                 layerMask: grappleLayer
             );
 
-            Vector3 ropeEndPoint; // End point for the visual rope
+            Vector3 ropeEndPoint; // Donde acaba la cuerda
 
-            // Check if we hit something
+            // Cuando el gancho conecta
             if (hit.collider != null)
             {
-                // --- Successful Grapple ---
                 grapplePoint = hit.point;
-                ropeEndPoint = grapplePoint; // Rope ends at the collision point
+                ropeEndPoint = grapplePoint;
 
-                // Configure and activate the Joint
                 joint.connectedAnchor = grapplePoint;
-                // *** CHANGE HERE: Use stretchTo for the joint distance ***
                 joint.distance = stretchTo;
-                // *********************************************************
                 joint.enabled = true;
-                isGrappling = true; // Mark that we are grappling
-
-                // Debug.Log("Hook CONNECTED!"); // For testing
+                isGrappling = true; 
             }
-            else
+            else //Cuando el gancho no conecta
             {
-                // --- Failed Grapple ---
-                ropeEndPoint = currentPosition + (Vector3)direction * grappleLength; // Rope goes to max length
-                isGrappling = false; // Not grappling
-                joint.enabled = false; // Ensure the joint is disabled
+                ropeEndPoint = currentPosition + (Vector3)direction * grappleLength; // La cuerda llega a su distancia maxima y se acaba
+                isGrappling = false;
+                joint.enabled = false; 
 
-                // Start the coroutine to hide the rope after a delay
                 hideCoroutine = StartCoroutine(HideRopeAfterDelay(ropeMissVisibleDuration));
-
-                // Debug.Log("Hook FAILED!"); // For testing
             }
 
-            // --- Always Show Rope When Firing ---
-            rope.SetPosition(0, ropeEndPoint);      // End point (anchor or end of miss)
-            rope.SetPosition(1, currentPosition);   // Start point (player at the moment of firing)
-            rope.enabled = true;                    // Make the rope visible
+            // Esto hace que la cuerda se muestre cuando la fallas para dar feedback visual de que has lanzado la cuerda pero no la ha acertado
+            rope.SetPosition(0, ropeEndPoint);   
+            rope.SetPosition(1, currentPosition); 
+            rope.enabled = true;    
         }
 
-        // --- Release Hook ---
+        // Este codigo hace que cuando sueltes el boton del raton se quita la cuerda
         if (Input.GetMouseButtonUp(0))
         {
-            // Stop the hide coroutine if active (important if released before miss timer ends)
             if (hideCoroutine != null)
             {
                 StopCoroutine(hideCoroutine);
                 hideCoroutine = null;
             }
 
-            // Deactivate the joint if it was active
             if (isGrappling)
             {
                 joint.enabled = false;
                 isGrappling = false;
             }
-            // Always hide the rope on release
             rope.enabled = false;
         }
 
-        // --- Update Rope Position (if visible) ---
+        //Este codigo hace que la cuerda se actualice moviendose con el jugador
         if (rope.enabled)
         {
-            // The end of the rope connected to the player always follows the player
             rope.SetPosition(1, transform.position);
 
-            // Optional: If grappling, ensure the anchor point doesn't visually drift
-            // This helps keep the visual rope anchored correctly even if the physics simulation
-            // slightly moves the effective anchor point internally.
             if (isGrappling)
             {
                 rope.SetPosition(0, grapplePoint);
@@ -138,18 +118,15 @@ public class GrapplingHook : MonoBehaviour
         }
     }
 
-    // Coroutine to hide the rope after a delay (only used on grapple miss)
-    IEnumerator HideRopeAfterDelay(float delay)
+
+    IEnumerator HideRopeAfterDelay(float delay) // Espera si has fallado la cuerda y oculta la cuerda si es false
     {
         yield return new WaitForSeconds(delay);
 
-        // Double-check: Hide only if NOT grappling and the rope is still enabled
-        // (We might have released the button in the meantime, which already hides it)
         if (!isGrappling && rope.enabled)
         {
             rope.enabled = false;
-            // Debug.Log("Hiding missed rope (coroutine)"); // For testing
         }
-        hideCoroutine = null; // Mark that the coroutine has finished
+        hideCoroutine = null;
     }
 }
