@@ -1,56 +1,60 @@
-# Hacker_Wars_Over_Terrorsoft
-Gusano ludopata
 README - Hack Wars
 1. Información del Proyecto
-Nombre del Proyecto: Snails (Gusano ludópata)
-Equipo Creador: Iker Rubio, Elliot Palestina, Lucas Ruiz, Daniel Fachero - OverTerrorsoft
-Fecha de Creación: 13/03/2025
-
-IDEA: Juego tipo "Worms" (Juego de estrategia por turnos en el que tienes un numero limitado de moviminetos y armas que puedes usar para eliminar a los elemigos, se juega en local) en el que la mecánica principal seria que las armas se consiguen a través de una especie de "Slot" de casino de forma aleatoria.
+Nombre del Proyecto: Limpia cristales
+Equipo Creador: Laura, Raúl, Miguel e Iguacel.
+Fecha de Creación: 06/03/2025
 
 2. Historial de Hackeos
-Hack 1 - OverTerrorsoft 13/03/2025-20/03/2025
+Hack #1 - Equipo "Mega Perverso Ltd." - 6/03/2025
+¿Qué hemos creado?
+Hemos creado un juego sobre cómo una persona tiene que limpiar los diferentes cristales de un edificio. El objetivo del juego es limpiar los cristales para ver las diferentes situaciones que están ocurriendo en los pisos.
+Las mecánicas base son moverte de izquierda a derecha, limpiar los cristales con click y arrastrar, moverte de arriba abajo solo en la selección de nivel (el edificio) y sistema de puntos de experiencia.
+En cada nivel la dificultad irá aumentando y habrá manchas que tengas que usar otra herramienta para quitarlas o que te vayan ensuciando la ventana conforme la vas limpiando, es decir, te da pie a que utilices más herramientas de tu equipo y tengas que ir mejorándolas a medida que vas subiendo de nivel.
 
-¿Qué hemos hecho?
+¿Qué problemas hemos encontrado?
+Uno de los primero problemas que nos hemos encontrado es que detectaba la mancha pero al arrastrar no la borraba, luego conseguimos que la quitase pero quitaba la opacidad del tirón y no necesitabas casi esfuerzo para quitarla. Conseguimos finalmente que la opacidad bajara poco a poco pero no borraba otras manchas, lo conseguimos solucionar y ahora se borran todas las manchas.
+En un principio para seleccionar la ventana y abrir el nivel es darle click a un cuadrado rojo que es un botón, esto en realidad debería ser que el personaje se mueva de arriba abajo, se coloque delante del cuadrado (ventana) y al darle a una tecla seleccione la ventana y se abra.
 
-1. Hemos creado una mecánica de turnos en el que el jugador activo tiene 30s para hacer acciones, cuando pasa ese tiempo o se ejecuta una accion el turno cambia al siguiente jugador en orden. El jugador que tiene el primer turno se elige de forma aleatoria en el script de "RNG Controller", en ese script también esta el funcionamiento de los turnos (cambiar personaje activo y que la cámara siga al personaje activo). En estos juegos se suele tener un equipo entero (Ex. 4 PJ) por ahora cada equipo es de un jugador pero estaría bien si fuesen de mas de uno.
+NOTAS
 
-2. Hemos creado también un sistema de apuntado y disparo (que a su vez las balas que sueltan tienen físicas, también esta la posibilidad de cambiar a que las balas vayan rectas) al jugador similar a como funciona en el juego "Worms" es decir, al disparar te quedas quieto, a su vez si mantienes el botón de disparo cambia la velocidad de la bala, salen propulsados con mas potencia o con menos dependiendo de lo que mantengas el botón y por último que cada vez que dispares 2 veces cambie de turno.
-
-3. Hemos creado un inventario (comunal por ahora), pero la idea es que cada equipo tenga un inventario independiente. También habría que añadir que cuando se seleccione un arma del inventario se use. Tiene 9 slots por lo que solo se pueden acumular 9 armas. Se activa con la "E". El arma se puede usar desde el principio y se debería usar cuando la tienes y se selecciona en el inventario.
-	
-4. Hemos creado un sistema de Spawn para los jugadores iniciales y que se spawneen entre los ejes x,y establecidos. También se ha creado el sistema de coins donde cada 30s te spawnea una moneda por el mapa aleatorio al igual que los jugadores (por ejex x,y) y si algún jugador colisiona con la coin se destruye y contea 1 punto al texto general.
-
-¿Cómo lo hemos hecho?
-
-Carpeta Interfaces: Hace que le puedas hacer daño al jugador
-
-Carpeta Invetory: Dentro hay 3 scripts, "Inventory" es el script base del inventario, "Item" son las propiedades de los ítems y "Slot" actualiza los slots del inventario con la imagen de los objetos recogidos.
-
-Carpeta Player: Dentro hay 2 scripts, "Player_Controller" es todo lo relacionado con el control del personaje además de detectar el colider de la coin y "PlayerAnimAndShoot" es todo lo que tiene que ver con la mecánica del disparo.
-
-Carpeta Weapons: Dentro hay 1 script, "BulletBehaviour" es el comportamiento de la bala.
-
-Carpeta Coins: Dentro hay 2 scripts, "CoinSpawn" hace que las monedas aparezcan aleatoriamente y "ScoreManager" cuenta las monedas recogidas.
-
-Carpeta SpawnPoint: Dentro hay 1 script, "SpawnPont" spawnea a los jugadores a los ejes ya colocados en el inspector.
-
-RNG_Controller: Es todo el funcionamiento de las rondas y la función de elegir aleatoriamente el primer jugador.
+En cada piso se desarrolla una historia corta que luego podrías vender la información a un vecino cotilla que le interese, obteniendo tu algo a cambio a modo de premio (exp, contactos…)
+Falta que detecte cuando la ventana está limpia y que salga para seleccionar otro nivel.
 
 
+Hack #2 - Equipo "OverTerrorSoft"  - 19/03/2024 - 22/04/2025
+
+¿Qué hemos cambiado?
+
+Hemos cambiado la idea original del juego de limpiar cristales reutilizando el código original con la mecánica de limpiar para hacer un juego de Spider-Man al que de manera ingeniosa hemos llamado Snail-Man, en el que te balanceas por una ciudad rescatando civiles que están atrapados en sus apartamentos incendiados, reusando la mecánica de limpiar para apartar escombros y rescatar a la gente que está atrapada. Es un juego arcade, es decir cuando te quedes sin tiempo pierdes y tienes que rescatar a los máximos civiles posibles en ese periodo de tiempo. 
+
+Con el click izquierdo disparas el gancho y te puedes agarrar a todas las superficies de color blanco.
+
+Con A y D te mueves de izquierda a derecha.
+
+Con Espacio saltas, a cuanto mas mantengas el Espacio saltara mas y si lo pulsas durante un momento saltara poco. 
+
+Elliot: hice la primera version del gancho que funcionaba pulsando justo encima de las superficies, añadi el parallax, añadi la camara para que sea igual a la del proyecto base, hice una "ciudad", añadi particulas al player y modifique el movimiento para que se balanceara como es debido.
+
+Lucas: Establecí la generación de los civiles detrás de las manchas de la ventana. Aparece uno al azar entre 4 posiciones posibles y tienes que quitar la mancha entera para poder rescatar al civil. Ayudé a buscar una solución para los problemas que generaba el gancho al principio.
+
+Dani: He creado el sistema de tiempo en el cual si tardas más de lo que nos da el juego en salvar a una persona te sale el losePanel, si salvas a la persona antes de que se acabe el tiempo se añadirán 15 segundos extras para poder dejarla en la base. También se creó un punto donde tiene que ir el jugador para salvar al civil con un onTriggerEnter y que salga la ventana donde habrá que salvar al civil, y también el punto de entrega que sería en la base. Además de que cuando se clique encima del civil al salvarlo en la ventana nos active el civil pegado al jugador para llevarlo a la base.
+
+Iker: Corregi la ventana (ahora escombros) para que no fuese un “Soft-Lock”, cambie el gancho para que se pudiese lanzar en cualquier dirección y no solo a las plataformas seleccionadas, baje la distancia para que no fuese infinito, añadi un sistema de respawn, añadir un stat de Stamina para que a la hora de limpiar los escombros tuvieses que gestionar el recurso y no quedarte sin él, cree una partícula de fuego y he hecho que los civiles sean seleccionables al quitar los escombros y que se quite la ventana al seleccionarlo.
 
 ¿Qué problemas hemos encontrado?
 
-En el script "Slots" hay una linea comentada, esta da problema, creemos que si le pones un panel a cada slot en la escena se debería solucionar.
+Elliot: para hacer el movimineto de gancho el jugador no se balanceaba bien, la solucion era simple, cambiar el movimineto del jugador para que use el transform del inspector.
 
-La hitbox del personaje esta rara y habría que ajustarla
+Lucas: Establecer puntos de aparición fijos para los civiles. dentro del minijuego de la ventana.
 
-Notas para el siguiente equipo:
-La idea era que tanto la temática del escenario como del resto del proyecto fuese con temática de casino, tipo maquina tragamonedas. También la idea inicial era hacerlo estilo pixel art pero como veais.
-A poder ser si os animais a hacer armas la idea era que fuesen referencias a otros juegos (Ex. Raygun de los zombies del Black Ops, Lanzaguisantes, Espada Maestra o Cuchillo del movimiento) No hay código para armas melee.
+Dani: No he encontrado ningún problema en lo que he trabajado, soy un fiera
 
-3. Instrucciones de Uso
+Iker: Tuve problemas a la hora de hacer que el gancho no fuese solo a las plataformas “suelo” 
 
-WASD --> Movimineto 
-E --> (Test) cambiar de ronda
-I --> Inventario  
+¿Cómo lo hemos hecho?
+
+El proyecto original no tenía la cámara ni el movimineto proporcionado así que primero tuvimos que hacer un "remake" del proyecto de limpiacristales e integrarlo en el proyecto base.
+
+NOTAS
+
+Faltan sprites, falta hacer que los civiles spawneen por los edificios.
