@@ -5,16 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
-  - Void
-  - Bandera
+  - Player 2
+  - Player 3
+  - Player 4
+  - Coins
+  - Olla
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Techo
+  - Ground
   - Water
   - UI
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -43,37 +47,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: 9
-    uniqueID: 1604072633
-    locked: 0
-  - name: 8
-    uniqueID: 3457353813
-    locked: 0
-  - name: 7
-    uniqueID: 789580973
-    locked: 0
-  - name: 6
-    uniqueID: 2992744751
-    locked: 0
-  - name: 5
-    uniqueID: 2159480283
-    locked: 0
-  - name: 4
-    uniqueID: 495250761
-    locked: 0
-  - name: 3
-    uniqueID: 557919639
-    locked: 0
-  - name: 2
-    uniqueID: 1170714327
-    locked: 0
-  - name: Edificios Jugables
-    uniqueID: 2261098347
-    locked: 0
-  - name: Player
-    uniqueID: 4039221161
-    locked: 0
-  - name: 1
-    uniqueID: 4089986797
     locked: 0
