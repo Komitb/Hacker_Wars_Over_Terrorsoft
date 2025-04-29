@@ -49,7 +49,7 @@ public class Inventory : MonoBehaviour
             Additem(itempicked, item.ID, item.type, item.description, item.icon);// El objeto con la tag item debe tener el script item con los diferentes apartados rellenados en el inspector
         }
     }
-    public void Additem(GameObject itemobject, int itemID, string itemtype, string itemdescription, Sprite itemicon)//actualiza el slot con la informacion del item recogido
+    public void Additem(GameObject itemobject, int itemID, string itemtype, string itemdescription, Sprite itemicon)//actualiza el slot con la infoemacion del item recogido
     {
         for (int i = 0; i < allslots; i++)
         {

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpawnPoit : MonoBehaviour
 {
@@ -13,12 +11,11 @@ public class SpawnPoit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      SpawnPoint(); //Llamamos al Spawn de los jugadores antes del primer frame
+        SpawnPoint(); //Llamamos al Spawn de los jugadores antes del primer frame
     }
-   
+
     void SpawnPoint()
     {
-       
         foreach (GameObject player in players)
         {
             Vector2 randomPosition = new Vector2(
