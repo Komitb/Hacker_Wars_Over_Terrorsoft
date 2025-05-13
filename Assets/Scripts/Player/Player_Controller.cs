@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,10 @@ public class Player_Controller : MonoBehaviour, IDamageable
     public GameObject player;
     public Slider timeslider;
     public float timeLimit = 20f; 
-    private float currentTime;
+    public float currentTime;
     public float timeToAdd;
+
+   
    
 
     [Header("Scripts")]
@@ -44,6 +47,7 @@ public class Player_Controller : MonoBehaviour, IDamageable
     {
         if (isActivePlayer == true)
         {
+           
             playerAim.HandleGunRotation();
             playerAim.HandleGunShooting();
 
@@ -59,7 +63,7 @@ public class Player_Controller : MonoBehaviour, IDamageable
             if (currentTime > 0)
             {
               currentTime -= Time.deltaTime;
-              timeslider.value = currentTime;
+              //timeslider.value = currentTime;
             }
             if (currentTime <= 0)
             {

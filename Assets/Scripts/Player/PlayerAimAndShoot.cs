@@ -30,8 +30,10 @@ public class PlayerAimAndShoot : MonoBehaviour
     public BulletBehaviour bulletBehaviour;
     public Slider Fuerza_Player1;
     public GameObject SliderFuerza;
+    public Player_Controller Player1;
     private void Start()
     {
+        Player1 = GetComponent<Player_Controller>();
         numOfShots = maxShots; // Inicializamos el contador de disparos
     }
 
@@ -103,7 +105,7 @@ public class PlayerAimAndShoot : MonoBehaviour
             yield break;  // Si ya está en ejecución, no lo llamamos de nuevo.
 
         isWaitingForNextRound = true;
-
+        Player1.currentTime = Player1.timeLimit;
         yield return new WaitForSeconds(2f); // Esperar 2 segundos
         rng_Controller.roundChanger();  // Cambiar el turno
         numOfShots = maxShots; // Resetear el contador de disparos para el siguiente turno

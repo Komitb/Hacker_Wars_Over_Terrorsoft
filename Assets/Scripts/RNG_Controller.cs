@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class RNG_Controller : MonoBehaviour
     Player_Controller playerController; 
 
     public CinemachineCamera cameraCine;
+    public TextMeshProUGUI tiempo;
 
     int selectedPlayerIndex;
     int playerRotation;
@@ -45,7 +47,7 @@ public class RNG_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        tiempo.text = roundTime.ToString("0");
         // El timer
         timer += Time.deltaTime;
         if (roundTime >= 0)
