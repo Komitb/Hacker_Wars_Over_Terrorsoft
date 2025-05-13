@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpawnPoit : MonoBehaviour
+public class SpawnPoint : MonoBehaviour
 {
     public GameObject[] players;
     public Vector2 minPosition;
@@ -13,10 +13,10 @@ public class SpawnPoit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      SpawnPoint(); //Llamamos al Spawn de los jugadores antes del primer frame
+      SpawnPlayers(); //Llamamos al Spawn de los jugadores antes del primer frame
     }
    
-    void SpawnPoint()
+    void SpawnPlayers()
     {
        
         foreach (GameObject player in players)

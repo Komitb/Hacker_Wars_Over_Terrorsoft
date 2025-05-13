@@ -12,7 +12,6 @@ public class Player_Controller : MonoBehaviour, IDamageable
 
     public float speed = 5f;       // Velocidad de movimiento horizontal
     public float jumpForce = 5f;   // Fuerza aplicada al saltar
-    public int coinValue; //Valor de la coin
 
     private Rigidbody2D rb;
     private bool isGrounded = false; // Indica si el jugador está en el suelo
@@ -20,7 +19,6 @@ public class Player_Controller : MonoBehaviour, IDamageable
     public bool isActivePlayer;
 
     public GameObject player;
-    public Slider timeslider;
     public float timeLimit = 20f; 
     public float currentTime;
     public float timeToAdd;
@@ -35,12 +33,9 @@ public class Player_Controller : MonoBehaviour, IDamageable
     {
         // Obtiene el componente Rigidbody2D del jugador
         rb = GetComponent<Rigidbody2D>();
-        //timeslider = transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<Slider>();
         currentHealth = maxHealth;
         //Le dice cual es el límite del tiempo para que pueda bajar el value
          currentTime = timeLimit; 
-         timeslider.maxValue = timeLimit; 
-         timeslider.value = timeLimit;
     }
 
     void Update()
@@ -79,7 +74,6 @@ public class Player_Controller : MonoBehaviour, IDamageable
         {
             currentTime = timeLimit;
         }
-        timeslider.value = currentTime;
         Debug.Log(currentTime);
     }
 
@@ -91,14 +85,7 @@ public class Player_Controller : MonoBehaviour, IDamageable
         {
             isGrounded = true;
 
-        }
-
-        //Detecta si hay colision con cualquier objeto con tag Coins y si existe esa colision añade 1 punto al scoreTotal y destruye el objeto
-        if (collision.gameObject.CompareTag("Coins"))
-        {
-            ScoreManager.instance.AddScore(1);
-            Destroy(collision.gameObject);
-        }
+        }             
     }
 
     // Cuando el jugador deja de estar en contacto con el suelo, se marca como no en el suelo
