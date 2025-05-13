@@ -31,13 +31,11 @@ public class PlayerAimAndShoot : MonoBehaviour
     public Player_Controller player_Controller;
     public RNG_Controller rng_Controller;
     public BulletBehaviour bulletBehaviour;
-    public Slider Fuerza_Player1;
+    public Slider Fuerza_Player;
     public GameObject SliderFuerza;
-    public Player_Controller Player;
 
     private void Start()
     {
-        Player = GetComponent<Player_Controller>();
         numOfShots = maxShots; // Inicializamos el contador de disparos
     }
 
@@ -85,7 +83,7 @@ public class PlayerAimAndShoot : MonoBehaviour
             bulletBehaviour.physicsBulletSpeed = chargeSpeed;
             bulletInst = Instantiate(bullet, bulletSpawnPoint.position, gun.transform.rotation);
             Debug.Log("Soltado con una fuerza de " + chargeSpeed);
-            Fuerza_Player1.value = 0f; //Al soltar la carga vuelve a cero la carga 
+            Fuerza_Player.value = 0f; //Al soltar la carga vuelve a cero la carga 
             SliderFuerza.SetActive(false); //Desactiva el Slider de fuerza del player (Que Desaperece)
             charging = false;
             lastFireTime = Time.time; // Actualiza el tiempo del último disparo
@@ -93,8 +91,8 @@ public class PlayerAimAndShoot : MonoBehaviour
         }
         if (charging)
         {
-            chargeSpeed = bulletBehaviour.physicsBulletSpeed += 10f * Time.deltaTime;
-            Fuerza_Player1.value = chargeSpeed; //Carga la fuerza del disparo del personaje 1   
+            chargeSpeed = bulletBehaviour.physicsBulletSpeed += 30f * Time.deltaTime;
+            Fuerza_Player.value = chargeSpeed; //Carga la fuerza del disparo del personaje 1   
             player_Controller.speed = 0; // Desactivar el movimiento del jugador al disparar
         }
         if (numOfShots == 0)
@@ -112,7 +110,7 @@ public class PlayerAimAndShoot : MonoBehaviour
             yield break;  // Si ya está en ejecución, no lo llamamos de nuevo.
 
         isWaitingForNextRound = true;
-        Player.currentTime = Player.timeLimit;
+        player_Controller.currentTime = player_Controller.timeLimit;
         yield return new WaitForSeconds(2f); // Esperar 2 segundos
         rng_Controller.roundChanger();  // Cambiar el turno
         numOfShots = maxShots; // Resetear el contador de disparos para el siguiente turno
