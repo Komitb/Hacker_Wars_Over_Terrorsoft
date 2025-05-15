@@ -8,15 +8,16 @@ TagManager:
   - Void
   - Bandera
   - BanderaWin
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Techo
+  - Floor
   - Water
   - UI
-  - 
-  - 
+  - PlayerDamage
+  - PlayerProjectile
   - 
   - 
   - 

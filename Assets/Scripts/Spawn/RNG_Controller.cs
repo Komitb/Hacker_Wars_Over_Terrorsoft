@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RNG_Controller : MonoBehaviour
 {
-    public GameObject[] Players; // El array que contiene a los jugadores
+    public List<GameObject> Players; // Cambia el array por una lista
 
     Player_Controller playerController; 
 
@@ -25,7 +25,7 @@ public class RNG_Controller : MonoBehaviour
     {
         roundTime = 30; // tiempo de la ronda
         // Elige un player aleatorio entre 0 y la cantidad de players que hay en el array (ahora mismo 4)
-        selectedPlayerIndex = UnityEngine.Random.Range(0, Players.Length);
+        selectedPlayerIndex = UnityEngine.Random.Range(0, Players.Count);
 
         // Seteas "SelectedPlayer" para acceder a su script
         GameObject selectedPlayer = Players[selectedPlayerIndex];
@@ -62,15 +62,23 @@ public class RNG_Controller : MonoBehaviour
     }
     public void roundChanger()
     {
+        // Elimina jugadores destruidos (nulos)
+        Players.RemoveAll(player => player == null);
+
+        if (Players.Count == 0)
+        {
+            Debug.Log("No quedan jugadores.");
+            return;
+        }
+
         // Reinicia el timer  de la ronda
-         roundTime = 30;
+        roundTime = 30;
         // Desactiva el jugador actual
         playerController.isActivePlayer = false;
         // Selecciona el jugador siguiente en el array
-        playerRotation = (playerRotation + 1) % Players.Length;
+        playerRotation = (playerRotation + 1) % Players.Count;
         // Setea seletedPlayer al jugador actual
         GameObject selectedPlayer = Players[playerRotation];
-
         // Accede al script del jugador actual
         playerController = selectedPlayer.GetComponent<Player_Controller>();
         Debug.Log("Selected Player: " + selectedPlayer.name);

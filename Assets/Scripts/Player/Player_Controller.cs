@@ -8,7 +8,7 @@ public class Player_Controller : MonoBehaviour, IDamageable
 {
     [Header("Parámetros del Jugador")]
     [SerializeField] private float maxHealth = 100f;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
 
     public float speed = 5f;       // Velocidad de movimiento horizontal
     public float jumpForce = 5f;   // Fuerza aplicada al saltar
@@ -22,10 +22,7 @@ public class Player_Controller : MonoBehaviour, IDamageable
     public float timeLimit = 20f; 
     public float currentTime;
     public float timeToAdd;
-
-   
-   
-
+        
     [Header("Scripts")]
     public PlayerAimAndShoot playerAim;
 
@@ -103,8 +100,9 @@ public class Player_Controller : MonoBehaviour, IDamageable
 
         if (currentHealth <= 0)
         {
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
 
     }
-}
+
+}   
