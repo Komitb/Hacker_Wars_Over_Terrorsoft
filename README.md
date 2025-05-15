@@ -58,3 +58,20 @@ El proyecto original no tenía la cámara ni el movimineto proporcionado así qu
 NOTAS
 
 Faltan sprites, falta hacer que los civiles spawneen por los edificios.
+
+Hack #3 - Equipo "OverTerrorSoft"  - 22/04/2024 - 15/05/2025
+
+¿Qué hemos cambiado?
+Hemos añadido sprites para los personajes jugables con su animacion, hemos arreglado el sistema de tiempo y reemplazado el slider por un contador ya que nos parecia mas claro a la hora de jugar las rondas,
+tambien hemos añadido un fondo con parallax para mejorar la estetica.
+
+¿Cómo lo hemos hecho?
+
+Utilizando aseprite hemos creado las animaciones de los personajes y para el contador de tiempo hemos tenid que actualizar el script "RNG_Controller"
+
+¿Qué problemas hemos encontrado?
+
+Los personajes salen demasiado lejos al ser impactados por una bala.
+
+Notas para el siguiente equipo: //
+
